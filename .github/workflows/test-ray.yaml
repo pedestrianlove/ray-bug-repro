@@ -1,0 +1,28 @@
+name: Test ray and fail
+
+on: push
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-ray:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          ref: standalone
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup ray
+        run: |
+          pip install -U "ray[default]"
+
+      - name: Run the ray script
+        run: |
+          python emoji.py
