@@ -24,7 +24,7 @@ jobs:
 
       - name: Setup ray
         run: |
-          conda install ray-default={{ matrix.ray-version }}
+          conda install ray-default=${{ matrix.ray-version }}
 
       - name: Run the ray script
         run: |
