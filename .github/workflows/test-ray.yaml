@@ -16,15 +16,13 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - uses: conda-incubator/setup-miniconda@v3
+      - uses: actions/setup-python@v5
         with:
-          auto-activate-base: true
-          channels: conda-forge
-          auto-update-conda: true
+          python-version: '3.13'
 
       - name: Setup ray
         run: |
-          conda install ray-default=${{ matrix.ray-version }}
+          pip install -U "ray[default]==${{ matrix.ray-version }}"
 
       - name: Run the ray script
         run: |
