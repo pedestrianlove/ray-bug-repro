@@ -29,4 +29,4 @@ jobs:
 
       - name: Run the ray script
         run: |
-          python emoji.py
+          python test-emoji.py
